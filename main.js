@@ -1,14 +1,14 @@
 
 // Create a Ship class
 class Ship {
-  constructor(shipName, startingPointValue, damagePointValue) {
+  constructor(shipName, startingPointValue, damagePointValue, element) {
     this.shipName = shipName;
     this.currentPoints = startingPointValue;
     this.damagePointValue = damagePointValue;
+    this.element = element;
   }
-
   getShipSummary() {
-    return `${this.shipName} starts with ${this.startingPointValue} hit points; and loses ${this.damagePointValue} points every time it is hit.`
+    return `${this.shipName} starts with ${this.currentPoints} hit points; and loses ${this.damagePointValue} points every time it is hit.`
   }
 
   deductDamage() {
@@ -16,37 +16,69 @@ class Ship {
     this.element.innerHTML = this.currentPoints;
   }
 }
-
 // Create instances of Ship class:
-const mothership = new Ship("Mothership", 100, 9);
-const defenceship = new Ship("Defence Ship", 80, 10);
-const attackship = new Ship("Attack Ship", 45, 12)
+const mothership = new Ship("Mothership", 100, 9, document.getElementById("mothershipScore"));
+const defenceship = new Ship("Defence Ship", 80, 10, document.getElementsByClassName("defenceshipScore"));
+const attackship = new Ship("Attack Ship", 45, 12, document.getElementsByClassName("attackshipScore"));
 
-console.log(mothership.getShipSummary())
-console.log(defenceship.getShipSummary())
-console.log(attackship.getShipSummary())
+console.log(mothership)
+console.log(defenceship)
+console.log(attackship)
 
-// Get 1 x mothership, 5 x defence ships, and 8 x attack ships to appear on the page and display points on the ship:
-const mShip = document.getElementById("mothership-score");
-mShip.innerHTML = mothership.startingPointValue;
-
-const defenceShips = document.getElementsByClassName("defenceship-score");
-  Array.from(defenceShips).forEach(ship => {
-    ship.innerHTML = defenceship.startingPointValue;
-  });
+// Displaying scores:
+const mShip = mothership.element;
+  mShip.innerHTML = mothership.currentPoints;
   
-const attackShips = document.getElementsByClassName("attackship-score");
-  Array.from(attackShips).forEach(ship => {
-    ship.innerHTML = attackship.startingPointValue;
+  // mothership.deductDamage()
+  // defenceship.deductDamage()
+  // attackship.deductDamage()
+
+const defenceShips = defenceship.element;
+  const defenceShipsArr = Array.from(defenceShips);
+    defenceShipsArr.forEach(ship => {
+    ship.innerHTML = defenceship.currentPoints;
+  });
+  console.log(defenceShipsArr)
+
+  const attackShips = attackship.element;
+  const attackShipsArr = Array.from(attackShips);
+    attackShipsArr.forEach(ship => {
+    ship.innerHTML = attackship.currentPoints;
   });
 
-// Select random ship:
-
-
+// Creating an array of all ships in the fleet:
+const allShips = attackShipsArr.concat(defenceShipsArr, mShip);
   
-  // showCurrentPoints() {
-  //   
-  // }
+// Selecting a random ship from this array:
+const randomShip = Math.floor(Math.random() * allShips.length);
+console.log(allShips[randomShip])
+// console.log(randomShip)
+console.log(mShip)
+
+// HOW TO DEDUCT POINTS/APPLY DEDUCT DAMAGE() TO THE ITEM THAT HAS BEEN RANDOMLY SELECTED???
+// ???????????????????????????
+
+
+
+
+//console.log(allShips.slice(8,12))
+
+// Deducting points from ship that is hit;
+// if (randomShip <= 7) {
+//   deductDamage();
+// } else if (randomShip <= 12) {
+//   deductDamage();
+// } else {
+//   mothership.deductDamage();
+// }
+    
+  
+// console.log(mothership.getShipSummary());
+// console.log(defenceship.getShipSummary());
+// console.log(attackship.getShipSummary());
+// console.log(allShips);
+// console.log(randomShip, allShips[randomShip]);
+
 
 // When a ship is randomly selected, its points will reduce accordingly
 // When a ship's points reach zero it is destroyed and cannot be hit again
@@ -56,11 +88,6 @@ const attackShips = document.getElementsByClassName("attackship-score");
 // }
 
  // Set up button to randomly select a ships when it is clicked
-  // Needs function to reduce points accordingly
-  // reducePoints() {
-
-    
-  // }
 
 // All ships are destroyed if the mothership is destroyed
 // The game is over when all ships are destroyed - Should be able to start a new game once finished

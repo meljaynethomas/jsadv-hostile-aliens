@@ -22,21 +22,20 @@ p {
   font-size: 20px;
 }
 
-.shipcontainer {
+.shipContainer {
   display: flex;
 }
 
-#mothership-score {
+#mothershipScore {
   width: 0;
   height: 0;
   border-top: 100px solid white;
   border-left: 60px solid transparent;
   border-right: 60px solid transparent;
   margin: 30px auto;
-  position: relative;
 }
 
-.defenceship-score {
+.defenceshipScore {
   width: 0;
   height: 0;
   border-top: 90px solid white;
@@ -46,7 +45,7 @@ p {
 }
 
 
-.attackship-score {
+.attackshipScore {
   width: 0;
   height: 0;
   border-top: 80px solid white;
@@ -55,7 +54,11 @@ p {
   margin: 30px auto;
 }
 
-.buttoncontainer {
+.hit {
+  border-top: solid firebrick;
+}
+
+.buttonContainer {
   display: flex;
   justify-content: center;
 }
