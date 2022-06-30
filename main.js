@@ -37,18 +37,16 @@ attackShips.forEach(ship => ship.renderAllShips());
 const allShips = attackShipElements.concat(defenceShipElements, mothershipElement);
 console.log(allShips)
   
-// Selecting a random ship from this array:
-const randomShip = Math.floor(Math.random() * allShips.length);
-console.log(allShips[randomShip])
-console.log(randomShip)
-
 // Deducting points from ship that is hit;
-if (randomShip == 13) {
-  motherShip.deductDamage();
-} else if (randomShip <= 7) {
-  attackShips[randomShip].deductDamage();
-} else {
-  defenceShips[randomShip - 8].deductDamage();
+const hitRandomShip = () => {
+  const randomShip = Math.floor(Math.random() * allShips.length);
+    if (randomShip == 13) {
+      motherShip.deductDamage();
+    } else if (randomShip <= 7) {
+      attackShips[randomShip].deductDamage();
+    } else {
+      defenceShips[randomShip - 8].deductDamage();
+    }
 }
 
  
