@@ -16,8 +16,19 @@ class Ship {
   }
 
   deductDamage() {
-    this.currentPoints -= this.damagePointValue;
+    if(this.currentPoints > 0) {
+      this.currentPoints -= this.damagePointValue;
+    }
     this.shipElement.innerHTML = this.currentPoints;
+    if(this.currentPoints <= 0) {
+      this.isDestroyed();
+    }
+  }
+
+  isDestroyed() {
+    if(this.currentPoints <= 0) {
+    this.shipElement.innerHTML = "*";
+    }
   }
 }
 
@@ -47,25 +58,20 @@ const hitRandomShip = () => {
     } else {
       defenceShips[randomShip - 8].deductDamage();
     }
-}
+  }
 
 // When a ship's points reach zero it is destroyed and cannot be hit again:
 
 const gameOver = () => {
-  const randomShip = Math.floor(Math.random() * allShips.length);
-    if (motherShip.currentPoints <= 0) {
-      console.log("Game Over")
-    }
+  if (motherShip.isDestroyed()) {
+    console.log("Game Over!!")
+  } 
 }
 
 
+//  Work out how to remove destroyed ships from array so they are not counted anymore...
 
 // The game is over when all ships are destroyed - Should be able to start a new game once finished
-// gameOver() {
-//   if(mothership.currentPointValue <= 0 ||)
-//     return "Game Over!"
-// }
-
 
 // When a ship is randomly selected, add class of 'hit' so it briefly turns red
 
