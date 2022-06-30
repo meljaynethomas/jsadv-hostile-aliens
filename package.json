@@ -1,0 +1,24 @@
+{
+  "name": "jsadv-hostile-aliens",
+  "version": "1.0.0",
+  "description": "<h1>_nology Hostile Aliens Challenge</h1>",
+  "main": "main.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meljaynethomas/jsadv-hostile-aliens.git"
+  },
+  "keywords": [],
+  "author": "Mel Thomas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/meljaynethomas/jsadv-hostile-aliens/issues"
+  },
+  "homepage": "https://github.com/meljaynethomas/jsadv-hostile-aliens#readme",
+  "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.18.6",
+    "jest": "^28.1.2"
+  }
+}

@@ -37,7 +37,7 @@ attackShips.forEach(ship => ship.renderAllShips());
 const allShips = attackShipElements.concat(defenceShipElements, mothershipElement);
 console.log(allShips)
   
-// Deducting points from ship that is hit;
+// Deducting points from ship that is hit:
 const hitRandomShip = () => {
   const randomShip = Math.floor(Math.random() * allShips.length);
     if (randomShip == 13) {
@@ -49,26 +49,30 @@ const hitRandomShip = () => {
     }
 }
 
- 
-// console.log(mothership.getShipSummary());
-// console.log(defenceship.getShipSummary());
-// console.log(attackship.getShipSummary());
+// When a ship's points reach zero it is destroyed and cannot be hit again:
+
+const gameOver = () => {
+  const randomShip = Math.floor(Math.random() * allShips.length);
+    if (motherShip.currentPoints <= 0) {
+      console.log("Game Over")
+    }
+}
 
 
 
-// When a ship is randomly selected, its points will reduce accordingly
-// When a ship's points reach zero it is destroyed and cannot be hit again
-
-// shipDestroyed() {
-//   this.currentPointValue <= 0;
-// }
-
- // Set up button to randomly select a ships when it is clicked
-
-// All ships are destroyed if the mothership is destroyed
 // The game is over when all ships are destroyed - Should be able to start a new game once finished
 // gameOver() {
-//   if(mothership.currentPointValue <= 0 || defenceship.currentPointValue <= 0 && attackship.currentPointValue <= 0)
+//   if(mothership.currentPointValue <= 0 ||)
 //     return "Game Over!"
 // }
 
+
+// When a ship is randomly selected, add class of 'hit' so it briefly turns red
+
+// Add class to destroyed ship so it is replaced with an explosion image!
+
+// All ships are destroyed if the mothership is destroyed
+
+// console.log(mothership.getShipSummary());
+// console.log(defenceship.getShipSummary());
+// console.log(attackship.getShipSummary());

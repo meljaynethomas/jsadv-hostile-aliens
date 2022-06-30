@@ -54,9 +54,9 @@ p {
   margin: 30px auto;
 }
 
-.hit {
+/* .hit {
   border-top: solid firebrick;
-}
+} */
 
 .buttonContainer {
   display: flex;
@@ -70,3 +70,27 @@ button {
   margin: 40px 40px;
 }
 
+/* .shipDestroyed {
+  background: firebrick;
+  width: 0px;
+  height: 0px;
+  position: relative;
+  text-align: center;
+}   
+
+.shipDestroyed:before,
+.shipDestroyed:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 80px;
+  width: 80px;
+  background: firebrick;
+}
+.shipDestroyed:before {
+  transform: rotate(30deg);
+}
+.shipDestroyed:after {
+  transform: rotate(60deg);
+} */
