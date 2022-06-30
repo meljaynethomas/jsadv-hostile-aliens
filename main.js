@@ -1,83 +1,61 @@
 
 // Create a Ship class
 class Ship {
-  constructor(shipName, startingPointValue, damagePointValue, element) {
+  constructor(shipName, startingPointValue, damagePointValue, shipElement) {
     this.shipName = shipName;
     this.currentPoints = startingPointValue;
     this.damagePointValue = damagePointValue;
-    this.element = element;
+    this.shipElement = shipElement;
   }
   getShipSummary() {
     return `${this.shipName} starts with ${this.currentPoints} hit points; and loses ${this.damagePointValue} points every time it is hit.`
   }
 
+  renderAllShips() {
+    this.shipElement.innerHTML = this.currentPoints;
+  }
+
   deductDamage() {
     this.currentPoints -= this.damagePointValue;
-    this.element.innerHTML = this.currentPoints;
+    this.shipElement.innerHTML = this.currentPoints;
   }
 }
-// Create instances of Ship class:
-const mothership = new Ship("Mothership", 100, 9, document.getElementById("mothershipScore"));
-const defenceship = new Ship("Defence Ship", 80, 10, document.getElementsByClassName("defenceshipScore"));
-const attackship = new Ship("Attack Ship", 45, 12, document.getElementsByClassName("attackshipScore"));
 
-console.log(mothership)
-console.log(defenceship)
-console.log(attackship)
+const mothershipElement = document.getElementById("mothershipScore");
+const motherShip = new Ship("Mothership", 100, 9, mothershipElement);
+motherShip.renderAllShips();
 
-// Displaying scores:
-const mShip = mothership.element;
-  mShip.innerHTML = mothership.currentPoints;
-  
-  // mothership.deductDamage()
-  // defenceship.deductDamage()
-  // attackship.deductDamage()
+const defenceShipElements = Array.from(document.getElementsByClassName("defenceshipScore"));
+const defenceShips = defenceShipElements.map(shipElement => new Ship("Defence Ship", 80, 10, shipElement));
+defenceShips.forEach(ship => ship.renderAllShips());
 
-const defenceShips = defenceship.element;
-  const defenceShipsArr = Array.from(defenceShips);
-    defenceShipsArr.forEach(ship => {
-    ship.innerHTML = defenceship.currentPoints;
-  });
-  console.log(defenceShipsArr)
-
-  const attackShips = attackship.element;
-  const attackShipsArr = Array.from(attackShips);
-    attackShipsArr.forEach(ship => {
-    ship.innerHTML = attackship.currentPoints;
-  });
+const attackShipElements = Array.from(document.getElementsByClassName("attackshipScore"));
+const attackShips = attackShipElements.map(shipElement => new Ship("Attack Ship", 45, 12, shipElement));
+attackShips.forEach(ship => ship.renderAllShips());
 
 // Creating an array of all ships in the fleet:
-const allShips = attackShipsArr.concat(defenceShipsArr, mShip);
+const allShips = attackShipElements.concat(defenceShipElements, mothershipElement);
+console.log(allShips)
   
 // Selecting a random ship from this array:
 const randomShip = Math.floor(Math.random() * allShips.length);
 console.log(allShips[randomShip])
-// console.log(randomShip)
-console.log(mShip)
-
-// HOW TO DEDUCT POINTS/APPLY DEDUCT DAMAGE() TO THE ITEM THAT HAS BEEN RANDOMLY SELECTED???
-// ???????????????????????????
-
-
-
-
-//console.log(allShips.slice(8,12))
+console.log(randomShip)
 
 // Deducting points from ship that is hit;
-// if (randomShip <= 7) {
-//   deductDamage();
-// } else if (randomShip <= 12) {
-//   deductDamage();
-// } else {
-//   mothership.deductDamage();
-// }
-    
-  
+if (randomShip == 13) {
+  motherShip.deductDamage();
+} else if (randomShip <= 7) {
+  attackShips[randomShip].deductDamage();
+} else {
+  defenceShips[randomShip - 8].deductDamage();
+}
+
+ 
 // console.log(mothership.getShipSummary());
 // console.log(defenceship.getShipSummary());
 // console.log(attackship.getShipSummary());
-// console.log(allShips);
-// console.log(randomShip, allShips[randomShip]);
+
 
 
 // When a ship is randomly selected, its points will reduce accordingly
