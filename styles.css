@@ -9,13 +9,14 @@ body {
   background-image: url('background.png');
 }
 
-h1, h2 {
+#mainHeading,
+#subHeading {
   color: white;
   text-align: center;
   padding: 5px;
 }
 
-p {
+#gameRules {
   color: white;
   text-align: center;
   padding: 15px;
@@ -27,6 +28,7 @@ p {
 }
 
 #mothershipScore {
+  color: white;
   width: 0;
   height: 0;
   border-top: 100px solid white;
@@ -36,6 +38,7 @@ p {
 }
 
 .defenceshipScore {
+  color: white;
   width: 0;
   height: 0;
   border-top: 90px solid white;
@@ -44,8 +47,8 @@ p {
   margin: 30px auto;
 }
 
-
 .attackshipScore {
+  color: white;
   width: 0;
   height: 0;
   border-top: 80px solid white;
@@ -54,20 +57,47 @@ p {
   margin: 30px auto;
 }
 
-/* .hit {
+.hit {
   border-top: solid firebrick;
-} */
-
-.buttonContainer {
-  display: flex;
-  justify-content: center;
 }
 
-button {
+#buttonContainer {
+  display: flex;
+}
+
+#hitButton {
+  display: block;
   border: solid 3px grey;
   border-radius: 5px;
   padding: 10px;
-  margin: 40px 40px;
+  margin: 50px auto;
+}
+
+.mainHeadingHidden,
+.subHeadingHidden,
+.gameRulesHidden,
+.shipContainerHidden,
+.hitButtonHidden {
+  display: none !important;
+}
+
+.gameOver {
+  display: none;
+}
+
+.newGameButton {
+  display: block;
+  border: solid 3px grey;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 0 auto;
+}
+
+.gameOverText {
+  color: white;
+  text-align: center;
+  font-size: 100px;
+  margin: 100px;
 }
 
 /* .shipDestroyed {

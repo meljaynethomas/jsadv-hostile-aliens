@@ -7,9 +7,6 @@ class Ship {
     this.damagePointValue = damagePointValue;
     this.shipElement = shipElement;
   }
-  getShipSummary() {
-    return `${this.shipName} starts with ${this.currentPoints} hit points; and loses ${this.damagePointValue} points every time it is hit.`
-  }
 
   render() {
     this.shipElement.innerHTML = this.currentPoints;
@@ -71,16 +68,16 @@ const hitRandomShip = () => {
   if (randomShipIndex == allShips.length-1) {
     //deduct damage from the mothership
     motherShips[0].deductDamage();
-  //otherwise if the random number is within the range of attack ships
+      //otherwise if the random number is within the range of attack ships
   } else if (randomShipIndex <= attackShips.length-1) {
-    //deduct damage from attach ships, using unmodified index
+    //deduct damage from attack ships, using unmodified index
     attackShips[randomShipIndex].deductDamage();
-    //remove from the attack ship array if it was destroyed
+        //remove from the attack ship array if it was destroyed
     if(attackShips[randomShipIndex].isDestroyed()){
       attackShips.splice(randomShipIndex, 1);
       allShips.splice(randomShipIndex, 1);
     }
-  //otherwise if the random number is within the range of defense ships (deduct attack ships length)
+  //otherwise if the random number is within the range of defence ships (deduct attack ships length)
   } else {
     //deduct the damange 
     defenceShips[randomShipIndex-attackShips.length].deductDamage();
@@ -91,17 +88,34 @@ const hitRandomShip = () => {
     }
   }
      if(isGameOver()) {
-      console.log("Game Over");
+      console.log("Game Over")
+      //hide all elements on page...    
+      const shipContainers = document.getElementsByClassName("shipContainer");
+      const hitButton = document.getElementById("hitButton");
+      const mainHeading = document.getElementById("mainHeading");
+      const subHeading = document.getElementById("subHeading");
+      const gameRules = document.getElementById("gameRules");
+        mainHeading.classList.add("mainHeadingHidden");
+        subHeading.classList.add("subHeadingHidden");
+        gameRules.classList.add("gameRulesHidden");
+        shipContainers[0].classList.add("shipContainerHidden");
+        shipContainers[1].classList.add("shipContainerHidden");
+        shipContainers[2].classList.add("shipContainerHidden");
+        hitButton.classList.add("hitButtonHidden");
+      //show 'game over' section and give option to restart:
+        document.querySelector(".gameOver").style.display = "block";
+        document.querySelector(".gameOverText").innerHTML = "Game Over!"
+        const newGameButton = document.querySelector(".newGameButton");
+        const playNewGame = () => {
+        location.reload();
+        }
+        newGameButton.addEventListener("click", playNewGame);
     }
 }
 
-  
-  
 
-
-
-//COMMENTS/NOTES/TAKEAWAYS
-//we do not really need allShips array - could add the others together and work in this way...
+//COMMENTS/NOTES/TAKEAWAYS:
+//We do not really need allShips array - could add the others together and work in this way...
 //...so that we don't need to splice two arrays each time
   
 
@@ -113,16 +127,11 @@ const hitRandomShip = () => {
 // [a1, a2, a3, a4, d1, d2, d3, d4, m];
 
 
-
-
-// Should be able to start a new game once finished
-
+//TO DO:
 // When a ship is randomly selected, add class of 'hit' so it briefly turns red
 
 // Add class to destroyed ship so it is replaced with an explosion image!
 
-// All ships are destroyed if the mothership is destroyed
+// HTML could probably be cleaner - Consider how to do this
 
-// console.log(mothership.getShipSummary());
-// console.log(defenceship.getShipSummary());
-// console.log(attackship.getShipSummary());
+// Testing
