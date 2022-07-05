@@ -89,19 +89,9 @@ const hitRandomShip = () => {
   }
      if(isGameOver()) {
       console.log("Game Over")
-      //hide all elements on page...    
-      const shipContainers = document.getElementsByClassName("shipContainer");
-      const hitButton = document.getElementById("hitButton");
-      const mainHeading = document.getElementById("mainHeading");
-      const subHeading = document.getElementById("subHeading");
-      const gameRules = document.getElementById("gameRules");
-        mainHeading.classList.add("mainHeadingHidden");
-        subHeading.classList.add("subHeadingHidden");
-        gameRules.classList.add("gameRulesHidden");
-        shipContainers[0].classList.add("shipContainerHidden");
-        shipContainers[1].classList.add("shipContainerHidden");
-        shipContainers[2].classList.add("shipContainerHidden");
-        hitButton.classList.add("hitButtonHidden");
+      //hide all elements on page...  
+      const mainContent = document.querySelector(".mainContent");
+        mainContent.classList.add("mainContentHidden");
       //show 'game over' section and give option to restart:
         document.querySelector(".gameOver").style.display = "block";
         document.querySelector(".gameOverText").innerHTML = "Game Over!"

@@ -73,11 +73,7 @@ body {
   margin: 50px auto;
 }
 
-.mainHeadingHidden,
-.subHeadingHidden,
-.gameRulesHidden,
-.shipContainerHidden,
-.hitButtonHidden {
+.mainContentHidden {
   display: none !important;
 }
 
