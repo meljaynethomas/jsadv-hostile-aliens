@@ -32,17 +32,20 @@ class Ship {
   }
 }
 
-const mothershipElements =  Array.from([document.getElementById("mothershipScore")]);
-const motherShips = mothershipElements.map(mothershipElement => new Ship("Mothership", 100, 9, mothershipElement));
-motherShips.forEach(motherShip => motherShip.render());
+const setupShips = (className, shipName, startingPoints, damage) => {
+  const shipElements = Array.from(document.getElementsByClassName(className));
+  const ships = shipElements.map(shipElement => new Ship(shipName, startingPoints, damage, shipElement));
+  ships.forEach(ship => ship.render());
+  return ships;
+}
 
-const defenceShipElements = Array.from(document.getElementsByClassName("defenceshipScore"));
-const defenceShips = defenceShipElements.map(shipElement => new Ship("Defence Ship", 80, 10, shipElement));
-defenceShips.forEach(ship => ship.render());
+const defenceShips = setupShips("defenceshipScore", "Defence Ship", 80, 10);
+const attackShips = setupShips("attackshipScore", "Attack Ship", 45, 12);
+const motherShips = setupShips("mothershipScore", "Mothership", 100, 9);
 
-const attackShipElements = Array.from(document.getElementsByClassName("attackshipScore"));
-const attackShips = attackShipElements.map(shipElement => new Ship("Attack Ship", 45, 12, shipElement));
-attackShips.forEach(ship => ship.render());
+// const mothershipElements =  Array.from([document.getElementById("mothershipScore")]);
+// const motherShips = mothershipElements.map(mothershipElement => new Ship("Mothership", 100, 9, mothershipElement));
+// motherShips.forEach(motherShip => motherShip.render());
 
 // Creating an array of all ships in the fleet:
 const allShips = attackShips.concat(defenceShips, motherShips);
@@ -68,7 +71,7 @@ const hitRandomShip = () => {
   if (randomShipIndex == allShips.length-1) {
     //deduct damage from the mothership
     motherShips[0].deductDamage();
-      //otherwise if the random number is within the range of attack ships
+    //otherwise if the random number is within the range of attack ships
   } else if (randomShipIndex <= attackShips.length-1) {
     //deduct damage from attack ships, using unmodified index
     attackShips[randomShipIndex].deductDamage();

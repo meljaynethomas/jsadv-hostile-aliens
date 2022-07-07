@@ -27,7 +27,7 @@ body {
   display: flex;
 }
 
-#mothershipScore {
+.mothershipScore {
   color: white;
   width: 0;
   height: 0;
@@ -57,8 +57,14 @@ body {
   margin: 30px auto;
 }
 
-.hit {
-  border-top: solid firebrick;
+.hitMothership {
+  color: white;
+  width: 0;
+  height: 0;
+  border-top: 100px solid firebrick;
+  border-left: 60px solid transparent;
+  border-right: 60px solid transparent;
+  margin: 30px auto;
 }
 
 #buttonContainer {
