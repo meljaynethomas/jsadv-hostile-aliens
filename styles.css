@@ -9,6 +9,10 @@ body {
   background-image: url('background.png');
 }
 
+#mainHeading {
+  margin-top: 30px;
+}
+
 #mainHeading,
 #subHeading {
   color: white;
