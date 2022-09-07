@@ -67,6 +67,26 @@ body {
   margin: 30px auto;
 }
 
+.hitDefenceship {
+  color: white;
+  width: 0;
+  height: 0;
+  border-top: 90px solid firebrick;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  margin: 30px auto;
+}
+
+.hitAttackship {
+  color: white;
+  width: 0;
+  height: 0;
+  border-top: 80px solid firebrick;
+  border-left: 40px solid transparent;
+  border-right: 40px solid transparent;
+  margin: 30px auto;
+}
+
 #buttonContainer {
   display: flex;
 }

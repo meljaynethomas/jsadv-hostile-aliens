@@ -71,11 +71,15 @@ const hitRandomShip = () => {
   if (randomShipIndex == allShips.length-1) {
     //deduct damage from the mothership
     motherShips[0].deductDamage();
+      document.querySelector('.mothershipScore').classList.add('hitMothership');
+        setTimeout(function() {
+          document.querySelector('.mothershipScore').classList.remove('hitMothership')
+        },200);
     //otherwise if the random number is within the range of attack ships
   } else if (randomShipIndex <= attackShips.length-1) {
     //deduct damage from attack ships, using unmodified index
     attackShips[randomShipIndex].deductDamage();
-        //remove from the attack ship array if it was destroyed
+    //remove from the attack ship array if it was destroyed
     if(attackShips[randomShipIndex].isDestroyed()){
       attackShips.splice(randomShipIndex, 1);
       allShips.splice(randomShipIndex, 1);
